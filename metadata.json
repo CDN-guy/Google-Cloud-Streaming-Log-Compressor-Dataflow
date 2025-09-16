@@ -1,0 +1,37 @@
+{
+  "name": "Streaming Pub/Sub to GCS Flex Template",
+  "description": "An Apache Beam streaming pipeline that reads raw messages from Pub/Sub and writes them to Google Cloud Storage.",
+  "parameters": [
+    {
+      "name": "input_topic",
+      "label": "Input PubSub Topic.",
+      "helpText": "Name of the input PubSub topic to consume from. Example: 'projects/<PROJECT_ID>/topics/<TOPIC_NAME>'."
+    },
+    {
+      "name": "output_gcs_directory",
+      "label": "Google Cloud Storage output path.",
+      "helpText": "The output path for the results in Google Cloud Storage. Example: 'gs://<BUCKET>/<DIR>'. (no trailing slash)"
+    },
+    {
+      "name": "compression_type",
+      "label": "Output file compression type.",
+      "helpText": "The compression algorithm to use for output files. Supported values are 'gzip', 'deflate', 'bz2', and 'uncompressed'. Defaults to 'gzip'.",
+      "defaultValue": "gzip",
+      "isOptional": true
+    },
+    {
+      "name": "window_interval_sec",
+      "label": "Window interval in seconds.",
+      "helpText": "Window interval in seconds for grouping incoming messages. Defaults to 60.",
+      "defaultValue": "60",
+      "isOptional": true
+    },
+    {
+      "name": "num_shards",
+      "label": "Number of shards for GCS output.",
+      "helpText": "Number of shards to use when writing windowed elements to GCS. Defaults to 5.",
+      "defaultValue": "5",
+      "isOptional": true
+    }
+  ]
+}
